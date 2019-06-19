@@ -17,7 +17,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
     DefaultTableModel ModelTorreA, ModelTorreB, ModelTorreC;
 
     int objetivo = 0;
-    double numMovMin = 0;
+    double numMinMov = 0;
     boolean parar = false;
 
     public TelaPRINCIPAL() {
@@ -45,12 +45,12 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
     }
 
     private void clear() {
-	numMovMin = 0;
 	contaMov = 0;
+	numMinMov = 0;
 	cbNumDisco.setSelectedItem(String.valueOf(objetivo));
     }
 
-    private void QuantidadeMovimento() {
+    private void QuantidaDeMovimento() {
 	contaMov++;
 	lblNumMovimentos.setText(String.valueOf(contaMov));
 
@@ -61,11 +61,12 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 	try {
 
 	    if (!lblMimMovimentos.getText().equals("")) {
-
+		
 		clear();
 		iniciar();
 	    }
 	} catch (Exception e) {
+	    System.out.println("Error: "+ e.getMessage());
 	}
 
     }
@@ -75,26 +76,27 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 	    Torre_A = new Stack();
 	    Torre_B = new Stack();
 	    Torre_C = new Stack();
-
+	    
+            //quantidade de discos
 	    objetivo = Integer.parseInt(cbNumDisco.getSelectedItem().toString());
 
-	    numMovMin = Math.pow(2, objetivo) - 1;
+	    numMinMov = Math.pow(2, objetivo) - 1;
 	    lblNumMovimentos.setText(String.valueOf(contaMov));
-	    lblMimMovimentos.setText(String.valueOf(String.format("%.0f", numMovMin)));
+	    lblMimMovimentos.setText(String.valueOf(String.format("%.0f", numMinMov)));
 
 	    for (int i = objetivo; i >= 1; i--) {
-		Nodo Guarda = new Nodo();
+		Nodo GuardaDiscos = new Nodo();
 		String disco = "";
 
 		for (int j = i; j > 0; j--) {
 		    disco += "#";
 		}
-		Guarda.setDados(disco);
-		Torre_A.Push(Guarda);
+		GuardaDiscos.setDados(disco);
+		Torre_A.Push(GuardaDiscos);
 	    }
 
 	    mostraTorreA();
-	  //  mostraTorreB();
+	    mostraTorreB();
 	  //  mostraTorreC();
 
 	} catch (Exception e) {
@@ -104,24 +106,46 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 
 	 private void mostraTorreA() {
 	   ((DefaultTableModel)tb_torreA.getModel()).setRowCount(0);
+	   ModelTorreA.setRowCount(10);
 	   Nodo x;
-	   int rowDisco = (10 - Torre_A.getCont());
+	 
+	   int rowDiscos = (10 - Torre_A.getCont());
 	   if(Torre_A.getCont() > 0){
 	       for(x = Torre_A.getHead();x.getEmbaixo() != null; x = x.getEmbaixo()){
-		   String [] vetor = {x.getDados()};
-		   ModelTorreA.insertRow(rowDisco , vetor);
-		   rowDisco ++;
+		   String [] vetorA = {x.getDados()};
+		   ModelTorreA.insertRow(rowDiscos , vetorA);
+		   rowDiscos ++;
 	       }
 	       
 	       if(x.getEmbaixo() == null){
 		  String [] vetor = {x.getDados()};
-		   ModelTorreA.insertRow(rowDisco , vetor);
+		   ModelTorreA.insertRow(rowDiscos , vetor);
 	       }
 	   }
 	   tb_torreA.setModel(ModelTorreA);
 	   ModelTorreA.setRowCount(10);
     }
-
+	  private void mostraTorreB() {
+	   ((DefaultTableModel)tb_torreB.getModel()).setRowCount(0);
+	   ModelTorreB.setRowCount(10);
+	   Nodo x;
+	 
+	   int rowDiscos = (10 - Torre_B.getCont());
+	   if(Torre_B.getCont() > 0){
+	       for(x = Torre_B.getHead();x.getEmbaixo() != null; x = x.getEmbaixo()){
+		   String [] vetorA = {x.getDados()};
+		   ModelTorreB.insertRow(rowDiscos , vetorA);
+		   rowDiscos ++;
+	       }
+	       
+	       if(x.getEmbaixo() == null){
+		  String [] vetor = {x.getDados()};
+		   ModelTorreB.insertRow(rowDiscos , vetor);
+	       }
+	   }
+	   tb_torreB.setModel(ModelTorreB);
+	   ModelTorreB.setRowCount(10);
+  }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -386,7 +410,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReiniciarActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-		iniciar();
+	iniciar();
 
     }//GEN-LAST:event_btnIniciarActionPerformed
 
