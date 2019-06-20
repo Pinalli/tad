@@ -1,7 +1,9 @@
 
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author AlbertoRochaPinalli
@@ -61,12 +63,12 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 	try {
 
 	    if (!lblMimMovimentos.getText().equals("")) {
-		
+
 		clear();
 		iniciar();
 	    }
 	} catch (Exception e) {
-	    System.out.println("Error: "+ e.getMessage());
+	    System.out.println("Error: " + e.getMessage());
 	}
 
     }
@@ -76,10 +78,9 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 	    Torre_A = new Stack();
 	    Torre_B = new Stack();
 	    Torre_C = new Stack();
-	    
-            //quantidade de discos
-	    objetivo = Integer.parseInt(cbNumDisco.getSelectedItem().toString());
 
+	    //quantidade de discos
+	    objetivo = Integer.parseInt(cbNumDisco.getSelectedItem().toString());
 	    numMinMov = Math.pow(2, objetivo) - 1;
 	    lblNumMovimentos.setText(String.valueOf(contaMov));
 	    lblMimMovimentos.setText(String.valueOf(String.format("%.0f", numMinMov)));
@@ -97,55 +98,79 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 
 	    mostraTorreA();
 	    mostraTorreB();
-	  //  mostraTorreC();
+	    //  mostraTorreC();
 
 	} catch (Exception e) {
 	    System.out.println("Error: " + e.getMessage());
 	}
     }
 
-	 private void mostraTorreA() {
-	   ((DefaultTableModel)tb_torreA.getModel()).setRowCount(0);
-	   ModelTorreA.setRowCount(10);
-	   Nodo x;
-	 
-	   int rowDiscos = (10 - Torre_A.getCont());
-	   if(Torre_A.getCont() > 0){
-	       for(x = Torre_A.getHead();x.getEmbaixo() != null; x = x.getEmbaixo()){
-		   String [] vetorA = {x.getDados()};
-		   ModelTorreA.insertRow(rowDiscos , vetorA);
-		   rowDiscos ++;
-	       }
-	       
-	       if(x.getEmbaixo() == null){
-		  String [] vetor = {x.getDados()};
-		   ModelTorreA.insertRow(rowDiscos , vetor);
-	       }
-	   }
-	   tb_torreA.setModel(ModelTorreA);
-	   ModelTorreA.setRowCount(10);
+    private void mostraTorreA() {
+	((DefaultTableModel) tb_torreA.getModel()).setRowCount(0);
+	ModelTorreA.setRowCount(10);
+	Nodo x;
+
+	int rowDiscos = (7 - Torre_A.getCont());
+	if (Torre_A.getCont() > 0) {
+	    for (x = Torre_A.getHead(); x.getEmbaixo() != null; x = x.getEmbaixo()) {
+		String[] vetorN = {x.getDados()};
+		ModelTorreA.insertRow(rowDiscos, vetorN);
+		rowDiscos++;
+	    }
+
+	    if (x.getEmbaixo() == null) {
+		String[] vetorN = {x.getDados()};
+		ModelTorreA.insertRow(rowDiscos, vetorN);
+	    }
+	}
+	tb_torreA.setModel(ModelTorreA);
+	ModelTorreA.setRowCount(10);
     }
-	  private void mostraTorreB() {
-	   ((DefaultTableModel)tb_torreB.getModel()).setRowCount(0);
-	   ModelTorreB.setRowCount(10);
-	   Nodo x;
-	 
-	   int rowDiscos = (10 - Torre_B.getCont());
-	   if(Torre_B.getCont() > 0){
-	       for(x = Torre_B.getHead();x.getEmbaixo() != null; x = x.getEmbaixo()){
-		   String [] vetorA = {x.getDados()};
-		   ModelTorreB.insertRow(rowDiscos , vetorA);
-		   rowDiscos ++;
-	       }
-	       
-	       if(x.getEmbaixo() == null){
-		  String [] vetor = {x.getDados()};
-		   ModelTorreB.insertRow(rowDiscos , vetor);
-	       }
-	   }
-	   tb_torreB.setModel(ModelTorreB);
-	   ModelTorreB.setRowCount(10);
-  }
+
+    private void mostraTorreB() {
+	((DefaultTableModel) tb_torreB.getModel()).setRowCount(0);
+	ModelTorreB.setRowCount(10);
+	Nodo x;
+
+	int rowDiscos = (7 - Torre_B.getCont());
+	if (Torre_B.getCont() > 0) {
+	    for (x = Torre_B.getHead(); x.getEmbaixo() != null; x = x.getEmbaixo()) {
+		String[] vetorN = {x.getDados()};
+		ModelTorreB.insertRow(rowDiscos, vetorN);
+		rowDiscos++;
+	    }
+
+	    if (x.getEmbaixo() == null) {
+		String[] vetorN = {x.getDados()};
+		ModelTorreB.insertRow(rowDiscos, vetorN);
+	    }
+	}
+	tb_torreB.setModel(ModelTorreB);
+	ModelTorreB.setRowCount(10);
+    }
+
+    private void mostraTorreC() {
+	((DefaultTableModel) tb_torreC.getModel()).setRowCount(0);
+	ModelTorreC.setRowCount(10);
+	Nodo x;
+
+	int rowDiscos = (7 - Torre_C.getCont());
+	if (Torre_C.getCont() > 0) {
+	    for (x = Torre_C.getHead(); x.getEmbaixo() != null; x = x.getEmbaixo()) {
+		String[] vetorN = {x.getDados()};
+		ModelTorreC.insertRow(rowDiscos, vetorN);
+		rowDiscos++;
+	    }
+
+	    if (x.getEmbaixo() == null) {
+		String[] vetorN = {x.getDados()};
+		ModelTorreC.insertRow(rowDiscos, vetorN);
+	    }
+	}
+	tb_torreC.setModel(ModelTorreC);
+	ModelTorreC.setRowCount(10);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -171,7 +196,6 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
-        btnResolver = new javax.swing.JButton();
         btnReiniciar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -268,18 +292,48 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
         }
 
         btnA_B.setText("B");
+        btnA_B.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnA_BActionPerformed(evt);
+            }
+        });
 
         btnA_C.setText("C");
+        btnA_C.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnA_CActionPerformed(evt);
+            }
+        });
 
         btnB_A.setText("A");
+        btnB_A.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnB_AActionPerformed(evt);
+            }
+        });
 
         btnB_C.setText("C");
+        btnB_C.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnB_CActionPerformed(evt);
+            }
+        });
 
         btnC_A.setText("A");
+        btnC_A.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnC_AActionPerformed(evt);
+            }
+        });
 
         btnC_B.setText("B");
+        btnC_B.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnC_BActionPerformed(evt);
+            }
+        });
 
-        cbNumDisco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "4", "5", "6", "7", "8", "9", "10" }));
+        cbNumDisco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "4", "5", "6", "7", " " }));
 
         lblNumMovimentos.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lblNumMovimentos.setForeground(new java.awt.Color(255, 0, 0));
@@ -308,8 +362,6 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
             }
         });
 
-        btnResolver.setText("Resolver");
-
         btnReiniciar.setText("Reiniciar");
         btnReiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -324,14 +376,32 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblNumMovimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblMimMovimentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbNumDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(89, 89, 89)
+                            .addComponent(btnIniciar)
+                            .addGap(156, 156, 156)
+                            .addComponent(btnReiniciar)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnA_B)
                         .addGap(18, 18, 18)
@@ -341,39 +411,21 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnB_C)
                         .addGap(152, 152, 152)
-                        .addComponent(btnC_A)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnC_B))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNumMovimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lblMimMovimentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbNumDisco, 0, 291, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(btnIniciar)
-                        .addGap(72, 72, 72)
-                        .addComponent(btnReiniciar)
-                        .addGap(87, 87, 87)
-                        .addComponent(btnResolver)))
-                .addGap(70, 70, 70))
+                        .addComponent(btnC_A)))
+                .addGap(18, 18, 18)
+                .addComponent(btnC_B)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnB_A)
                     .addComponent(btnB_C)
@@ -381,7 +433,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
                     .addComponent(btnC_B)
                     .addComponent(btnA_B)
                     .addComponent(btnA_C))
-                .addGap(80, 80, 80)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -397,9 +449,8 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIniciar)
-                    .addComponent(btnReiniciar)
-                    .addComponent(btnResolver))
-                .addContainerGap(84, Short.MAX_VALUE))
+                    .addComponent(btnReiniciar))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -408,11 +459,188 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
     private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed
 	reiniciar();
     }//GEN-LAST:event_btnReiniciarActionPerformed
+    private void moveDeA_B() {
+	try {
+	    if (Torre_A.getCont() > 0) {
+		Nodo GuardaDiscos = new Nodo();
+		GuardaDiscos.setDados(Torre_A.Peek());
 
+		if (Torre_B.getCont() > 0) {
+		    if (GuardaDiscos.getDados().compareTo(Torre_B.Peek()) > 0) {
+			return;
+		    }
+		}
+
+		Torre_A.PoP();
+		Torre_B.Push(GuardaDiscos);
+
+		mostraTorreA();
+		mostraTorreB();
+		QuantidaDeMovimento();
+	    }
+	} catch (Exception e) {
+	}
+    }
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+         contaMov = 0;	 
 	iniciar();
 
     }//GEN-LAST:event_btnIniciarActionPerformed
+
+    private void btnA_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA_BActionPerformed
+	moveDeA_B();
+    }//GEN-LAST:event_btnA_BActionPerformed
+    private void moveDeA_C() {
+	try {
+	    if (Torre_A.getCont() > 0) {
+		Nodo GuardaDiscos = new Nodo();
+		GuardaDiscos.setDados(Torre_A.Peek());
+
+		if (Torre_C.getCont() > 0) {
+		    if (GuardaDiscos.getDados().compareTo(Torre_C.Peek()) > 0) {
+			return;
+		    }
+		}
+
+		Torre_A.PoP();
+		Torre_C.Push(GuardaDiscos);
+
+		mostraTorreA();
+		mostraTorreC();
+		QuantidaDeMovimento();
+
+		if (Torre_C.getCont() == objetivo && contaMov == numMinMov) {
+		    JOptionPane.showMessageDialog(null, "Parabéns, alcançou o objetivo de minimos movimentos!\n\n Tenta outro nível de dificuldade", "Parabéns", JOptionPane.WARNING_MESSAGE);
+
+		} else if (Torre_C.getCont() == objetivo && contaMov != numMinMov) {
+		    JOptionPane.showMessageDialog(null, "Oh não,ultrapassou o mínimo de movimentos\n\nTenta superar o objetivo ", "Boa sorte", JOptionPane.INFORMATION_MESSAGE);
+		}
+
+	    }
+	} catch (Exception e) {
+	}
+    }
+
+
+    private void btnA_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnA_CActionPerformed
+	moveDeA_C();
+    }//GEN-LAST:event_btnA_CActionPerformed
+    private void moveDeB_A() {
+	try {
+	    if (Torre_B.getCont() > 0) {
+		Nodo GuardaDiscos = new Nodo();
+		GuardaDiscos.setDados(Torre_B.Peek());
+
+		if (Torre_A.getCont() > 0) {
+		    if (GuardaDiscos.getDados().compareTo(Torre_A.Peek()) > 0) {
+			return;
+		    }
+		}
+
+		Torre_B.PoP();
+		Torre_A.Push(GuardaDiscos);
+
+		mostraTorreA();
+		mostraTorreB();
+		QuantidaDeMovimento();
+	    }
+	} catch (Exception e) {
+	}
+
+    }
+    private void btnB_AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB_AActionPerformed
+	moveDeB_A();
+    }//GEN-LAST:event_btnB_AActionPerformed
+    
+    private void moveDeB_C(){
+	try {
+	    if (Torre_B.getCont() > 0) {
+		Nodo GuardaDiscos = new Nodo();
+		GuardaDiscos.setDados(Torre_B.Peek());
+
+		if (Torre_C.getCont() > 0) {
+		    if (GuardaDiscos.getDados().compareTo(Torre_C.Peek()) > 0) {
+			return;
+		    }
+		}
+
+		Torre_B.PoP();
+		Torre_C.Push(GuardaDiscos);
+
+		mostraTorreB();
+		mostraTorreC();
+		QuantidaDeMovimento();
+
+		if (Torre_C.getCont() == objetivo && contaMov == numMinMov) {
+		    JOptionPane.showMessageDialog(null, "Parabéns, alcançou o objetivo de minimos movimentos!\n\n Tenta outro nível de dificuldade", "Parabéns", JOptionPane.WARNING_MESSAGE);
+
+		} else if (Torre_C.getCont() == objetivo && contaMov != numMinMov) {
+		    JOptionPane.showMessageDialog(null, "Parabéns, atingiu o resultado\n\nTenta superar o objtivo ", "Parabéns", JOptionPane.INFORMATION_MESSAGE);
+		}
+
+	    }
+	} catch (Exception e) {
+	}
+    }
+    private void btnB_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB_CActionPerformed
+          moveDeB_C();
+    }//GEN-LAST:event_btnB_CActionPerformed
+    private void  moveDeC_A(){
+	
+	try {
+	    if (Torre_C.getCont() > 0) {
+		Nodo GuardaDiscos = new Nodo();
+		GuardaDiscos.setDados(Torre_C.Peek());
+
+		if (Torre_A.getCont() > 0) {
+		    if (GuardaDiscos.getDados().compareTo(Torre_A.Peek()) > 0) {
+			return;
+		    }
+		}
+
+		Torre_C.PoP();
+		Torre_A.Push(GuardaDiscos);
+
+		mostraTorreA();
+		mostraTorreC();
+		QuantidaDeMovimento();
+
+	    }
+	} catch (Exception e) {
+	}
+    }
+    private void btnC_AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC_AActionPerformed
+        moveDeC_A();
+    }//GEN-LAST:event_btnC_AActionPerformed
+    
+    private void  moveDeC_B(){
+	try {
+	    if (Torre_C.getCont() > 0) {
+		Nodo GuardaDiscos = new Nodo();
+		GuardaDiscos.setDados(Torre_C.Peek());
+
+		if (Torre_B.getCont() > 0) {
+		    if (GuardaDiscos.getDados().compareTo(Torre_B.Peek()) > 0) {
+			return;
+		    }
+		}
+
+		Torre_C.PoP();
+		Torre_B.Push(GuardaDiscos);
+
+		mostraTorreB();
+		mostraTorreC();
+		QuantidaDeMovimento();
+
+		
+	    }
+	} catch (Exception e) {
+	}
+	
+    }
+    private void btnC_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC_BActionPerformed
+        moveDeC_B();
+    }//GEN-LAST:event_btnC_BActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,7 +686,6 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
     private javax.swing.JButton btnC_B;
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnReiniciar;
-    private javax.swing.JButton btnResolver;
     private javax.swing.JComboBox<String> cbNumDisco;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
