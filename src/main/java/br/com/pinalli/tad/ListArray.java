@@ -1,13 +1,14 @@
 package br.com.pinalli.tad;
 
-
 import java.util.Arrays;
 import java.util.Iterator;
+
 /**
- *@author AlbertoRochaPinalli
+ * @author AlbertoRochaPinalli
  * @param <E>
  */
-public class ListArray<E> implements ListTAD<E>{
+public class ListArray<E> implements ListTAD<E> {
+
     private E[] vet;
     private static final int INITIAL_SIZE = 10;
     private int qntElementos = 0;
@@ -16,7 +17,7 @@ public class ListArray<E> implements ListTAD<E>{
         vet = (E[]) new Object[INITIAL_SIZE];
     }
 
-    @Override
+    @Override //ok
     public void add(E element) {
         for (int i = 0; i < vet.length; i++) {
             if (vet[i] == null) {
@@ -27,56 +28,58 @@ public class ListArray<E> implements ListTAD<E>{
         }
     }
 
-     @Override
+    @Override //ok
     public void add(int index, E element) {
+        rangeCheckForAdd(index);
+        
+        ensureCapacityInternal(qntElementos + 1);  // Increments modCount!!
+        System.arraycopy(vet, index, vet, index + 1,
+                qntElementos - index);
         vet[index] = element;
         qntElementos++;
 
     }
 
-      @Override
+    @Override //ok
     public E remove(int pos) {
         vet[pos] = null;
         return vet[pos];
 
     }
 
-     @Override
+    @Override
     public E remove(E element) {
-        for(int i=0; i < vet.length;i++){
-            if(vet[i]== element){
-                vet[i]= null;
+        for (int i = 0; i < vet.length; i++) {
+            if (vet[i] == element) {
+                vet[i] = null;
             }
         }
         return null;
     }
 
-     @Override
+    @Override
     public E removeFirst() {
 
         return remove(0);
     }
 
-   
     @Override
     public E removeLast() {
         return null;
     }
 
-   
     @Override
     public String toString() {
         return "vet =" + Arrays.toString(vet) + '}' + "\n"
                 + "{ qntElementos = " + qntElementos + '}';
     }
 
- 
     @Override
     public E get(int pos) {
         return vet[pos];
     }
 
-     @Override
+    @Override
     public void set(int index, E element) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -86,7 +89,7 @@ public class ListArray<E> implements ListTAD<E>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-  @Override
+    @Override
     public boolean isEmpty() {
         for (E vet1 : vet) {
             if (vet1 == null) {
@@ -96,18 +99,18 @@ public class ListArray<E> implements ListTAD<E>{
         return false;
     }
 
-      @Override
+    @Override
     public int size() {
         return qntElementos;
     }
 
-     @Override
+    @Override
     public int count(E element) {
         return 0;
 
     }
 
-     @Override
+    @Override
     public void clean() {
         vet = (E[]) new Object[INITIAL_SIZE];
         qntElementos = 0;
@@ -118,24 +121,37 @@ public class ListArray<E> implements ListTAD<E>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   @Override
+    @Override
     public void addFirst(E element) {
 
     }
 
-  @Override
+    @Override
     public void addLast(E element) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-  @Override
+    @Override
     public E getFirst() {
         return null;
     }
 
-     @Override 
+    @Override
     public E getLast() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    private void rangeCheckForAdd(int index) {
+        if (index > qntElementos || index < 0) {
+            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+        }
+    }
+
+    private void ensureCapacityInternal(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private String outOfBoundsMsg(int index) {
+        return "Index: " + index + ", Size: " + qntElementos;
+    }
 }
