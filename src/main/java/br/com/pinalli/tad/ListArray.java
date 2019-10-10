@@ -10,6 +10,7 @@ import java.util.Iterator;
 public class ListArray<E> implements ListTAD<E> {
 
     private E[] vet;
+    private E[] newVet;
     private static final int INITIAL_SIZE = 10;
     private int qntElementos = 0;
 
@@ -31,7 +32,7 @@ public class ListArray<E> implements ListTAD<E> {
     @Override //ok
     public void add(int index, E element) {
         rangeCheckForAdd(index);
-        
+
         ensureCapacityInternal(qntElementos + 1);  // Increments modCount!!
         System.arraycopy(vet, index, vet, index + 1,
                 qntElementos - index);
@@ -126,9 +127,17 @@ public class ListArray<E> implements ListTAD<E> {
 
     }
 
+    /**
+     * Adiciona um elemento ao final da lista
+     * @param element elemento a ser adicionado ao final da lista
+     */
     @Override
-    public void addLast(E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addLast(E element) { //ok
+        if (qntElementos == vet.length) {
+            setCapacity(vet.length * 2);
+        }
+        vet[qntElementos] = element;
+        qntElementos++;
     }
 
     @Override
@@ -138,7 +147,23 @@ public class ListArray<E> implements ListTAD<E> {
 
     @Override
     public E getLast() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
+    }
+
+    private void setCapacity(Integer newCapacity) { 
+        if (newCapacity != vet.length) {
+            int min;
+            Integer[] newData = new Integer[newCapacity];
+            if (vet.length < newCapacity) {
+                min = vet.length;
+            } else {
+                min = newCapacity;
+            }
+            for (int i = 0; i < min; i++) {
+                newData[i] = (Integer) vet[i];
+            }
+            vet = (E[]) newData;
+        }
     }
 
     private void rangeCheckForAdd(int index) {
@@ -148,7 +173,6 @@ public class ListArray<E> implements ListTAD<E> {
     }
 
     private void ensureCapacityInternal(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private String outOfBoundsMsg(int index) {
