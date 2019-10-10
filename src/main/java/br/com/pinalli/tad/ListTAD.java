@@ -17,7 +17,7 @@ public interface ListTAD<E> {
 
     /**
      * ********
-     * Adiciona o elemento fornecido em uma dada posição da lista.
+     * Adiciona o elemento fornecido em uma determinada posição da lista.
      *
      * @param index Posição da lista.
      * @param element Elemento a ser adicionado.

@@ -11,10 +11,10 @@ public class ListArray<E> implements ListTAD<E> {
 
     private E[] vet;
     private E[] newVet;
-    private static final int INITIAL_SIZE = 10;
+    private static final Integer INITIAL_SIZE = 10;
     private int qntElementos = 0;
 
-    public ListArray(int tamanho) {
+    public ListArray(Integer tamanho) {
         vet = (E[]) new Object[INITIAL_SIZE];
     }
 
@@ -129,6 +129,7 @@ public class ListArray<E> implements ListTAD<E> {
 
     /**
      * Adiciona um elemento ao final da lista
+     *
      * @param element elemento a ser adicionado ao final da lista
      */
     @Override
@@ -142,7 +143,7 @@ public class ListArray<E> implements ListTAD<E> {
 
     @Override
     public E getFirst() {
-        return null;
+          return vet[0];
     }
 
     @Override
@@ -150,7 +151,7 @@ public class ListArray<E> implements ListTAD<E> {
         return null;
     }
 
-    private void setCapacity(Integer newCapacity) { 
+    private void setCapacity(Integer newCapacity) {
         if (newCapacity != vet.length) {
             int min;
             Integer[] newData = new Integer[newCapacity];
@@ -168,14 +169,11 @@ public class ListArray<E> implements ListTAD<E> {
 
     private void rangeCheckForAdd(int index) {
         if (index > qntElementos || index < 0) {
-            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+            //throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
         }
     }
 
     private void ensureCapacityInternal(int i) {
-    }
+          }
 
-    private String outOfBoundsMsg(int index) {
-        return "Index: " + index + ", Size: " + qntElementos;
-    }
 }
