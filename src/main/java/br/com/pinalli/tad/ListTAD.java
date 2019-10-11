@@ -1,6 +1,13 @@
 package br.com.pinalli.tad;
 /*http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/ArrayList.java
 https://courses.cs.washington.edu/courses/cse143/17su/lectures/08-11/collections/LinkedList.java
+https://www.iro.umontreal.ca/~pift1025/bigjava/Ch20/ch20.html   LinkedList
+http://www.cs.loyola.edu/~jglenn/202/F2013/Examples/ArrayListImplementation/arraylist.html
+https://www.chegg.com/homework-help/questions-and-answers/singly-linked-list-class-write-function-removeafter-e-element-method-removes-elements-elem-q33027003
+http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/code/LinkedList.java
+https://www.cs.wcupa.edu/rkline/ds/linked-lists.html
+https://www.cs.utexas.edu/users/novak/LinkedList.java
+http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/LinkedList.java
 /**
 **
  * @author AlbertoRochaPinalli
@@ -130,25 +137,19 @@ public interface ListTAD<E> {
     public void addLast(E element);
 
     /**
-     * ******
      * Remove o elemento armazenado na primeira posição da lista.
-     *
      * @return Elemento removido da lista.
      */
     public E removeFirst();
 
     /**
-     * ******
      * Remove o elemento armazenado na última posição da lista.
-     *
-     * @return Elemento removido da lista.
+     *@return Elemento removido da lista.
      */
     public E removeLast();
 
     /**
-     * ******
      * Recupera o elemento armazenado na primeira posição da lista.
-     *
      * @return Elemento armazenado na lista.
      */
     public E getFirst();

@@ -10,8 +10,8 @@ import java.util.Iterator;
 public class ListArray<E> implements ListTAD<E> {
 
     private E[] vet;
-    private E[] newVet;
-    private static final Integer INITIAL_SIZE = 10;
+    private transient E last;
+    private static final Integer INITIAL_SIZE = 15;
     private int qntElementos = 0;
 
     public ListArray(Integer tamanho) {
@@ -31,14 +31,29 @@ public class ListArray<E> implements ListTAD<E> {
 
     @Override //ok
     public void add(int index, E element) {
-        rangeCheckForAdd(index);
-
-        ensureCapacityInternal(qntElementos + 1);  // Increments modCount!!
-        System.arraycopy(vet, index, vet, index + 1,
-                qntElementos - index);
+        if (index < 0 || index > qntElementos) {
+            throw new IndexOutOfBoundsException();
+        }
+        add(element);
+        for (int i = qntElementos - 1; i > index; i--) {
+            vet[i] = vet[i - 1];
+        }
+        // put the new one in the right place
         vet[index] = element;
-        qntElementos++;
+    }
 
+    @Override
+    public void addLast(E element) { //ok
+      for (int i = 0; i < vet.length-1; i++) {
+            vet[i] = vet[i + 1];
+            vet[i + 1] = element;
+        }
+
+    }
+
+    @Override
+    public E getFirst() {
+        return vet[0];
     }
 
     @Override //ok
@@ -49,7 +64,7 @@ public class ListArray<E> implements ListTAD<E> {
     }
 
     @Override
-    public E remove(E element) {
+    public E remove(E element) {//ok
         for (int i = 0; i < vet.length; i++) {
             if (vet[i] == element) {
                 vet[i] = null;
@@ -60,24 +75,33 @@ public class ListArray<E> implements ListTAD<E> {
 
     @Override
     public E removeFirst() {
-
         return remove(0);
     }
 
     @Override
     public E removeLast() {
+        for (int i = 0; i < vet.length-1; i++) {
+            vet[i] = vet[i + 1];
+            vet[i + 1] = null;
+               
+        }
         return null;
+       
     }
 
     @Override
     public String toString() {
-        return "vet =" + Arrays.toString(vet) + '}' + "\n"
-                + "{ qntElementos = " + qntElementos + '}';
+        return "Vetor = " + Arrays.toString(vet) + '}' 
+                + "\n Quantidade de elementos = " + qntElementos + '}';
     }
 
     @Override
-    public E get(int pos) {
-        return vet[pos];
+    public E get(int index) {
+        if (index < 0 || index >= qntElementos) {
+            throw new IndexOutOfBoundsException("Não existe essa posição");
+
+        }
+        return vet[index];
     }
 
     @Override
@@ -87,17 +111,17 @@ public class ListArray<E> implements ListTAD<E> {
 
     @Override
     public E search(E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (E vet1 : vet) {
+            if (vet1 == element) {
+                return element;
+            }
+        }
+        return null;
     }
 
     @Override
     public boolean isEmpty() {
-        for (E vet1 : vet) {
-            if (vet1 == null) {
-                return true;
-            }
-        }
-        return false;
+        return qntElementos == 0;
     }
 
     @Override
@@ -107,7 +131,13 @@ public class ListArray<E> implements ListTAD<E> {
 
     @Override
     public int count(E element) {
-        return 0;
+        int cont = 0;
+        for (E vet1 : vet) {
+            if (vet1 == element) {
+                cont++;
+            }
+        }
+        return cont;
 
     }
 
@@ -124,26 +154,9 @@ public class ListArray<E> implements ListTAD<E> {
 
     @Override
     public void addFirst(E element) {
-
-    }
-
-    /**
-     * Adiciona um elemento ao final da lista
-     *
-     * @param element elemento a ser adicionado ao final da lista
-     */
-    @Override
-    public void addLast(E element) { //ok
-        if (qntElementos == vet.length) {
-            setCapacity(vet.length * 2);
+        for (E vet1 : vet) {
+            vet[0] = element;
         }
-        vet[qntElementos] = element;
-        qntElementos++;
-    }
-
-    @Override
-    public E getFirst() {
-          return vet[0];
     }
 
     @Override
@@ -166,14 +179,5 @@ public class ListArray<E> implements ListTAD<E> {
             vet = (E[]) newData;
         }
     }
-
-    private void rangeCheckForAdd(int index) {
-        if (index > qntElementos || index < 0) {
-            //throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
-        }
-    }
-
-    private void ensureCapacityInternal(int i) {
-          }
 
 }
