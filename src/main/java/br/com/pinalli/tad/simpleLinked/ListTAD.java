@@ -1,27 +1,20 @@
-package br.com.pinalli.tad;
-/*http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/ArrayList.java
-https://courses.cs.washington.edu/courses/cse143/17su/lectures/08-11/collections/LinkedList.java
-https://www.iro.umontreal.ca/~pift1025/bigjava/Ch20/ch20.html   LinkedList
-http://www.cs.loyola.edu/~jglenn/202/F2013/Examples/ArrayListImplementation/arraylist.html
-https://www.chegg.com/homework-help/questions-and-answers/singly-linked-list-class-write-function-removeafter-e-element-method-removes-elements-elem-q33027003
-http://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/code/LinkedList.java
-https://www.cs.wcupa.edu/rkline/ds/linked-lists.html
-https://www.cs.utexas.edu/users/novak/LinkedList.java
-http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/LinkedList.java
-http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/ArrayList.java
+package br.com.pinalli.tad.simpleLinked;
+
+import java.util.Iterator;
 /**
-**
+ *
  * @author AlbertoRochaPinalli
+ * @param <T>
  */
-import java.util.*;
-public interface ListTAD<E> {
+public interface ListTAD<T> {
+
     /**
      * ********
      * Adiciona um elemento na última posição da lista.
      *
      * @param element Elemento a ser adicionado.
      */
-    public void add(E element);
+    public void add(T element);
 
     /**
      * ********
@@ -30,23 +23,25 @@ public interface ListTAD<E> {
      * @param index Posição da lista.
      * @param element Elemento a ser adicionado.
      */
-    public void add(int index, E element);
+    public void add(int index, T element);
 
     /**
      * ********
      * Remove o elemento armazenado na posição fornecida da lista.
+     *
      * @param pos Posição da lista.
-     * @return 
+     * @return
      */
-    public E remove(int pos);
+    public T remove(int pos);
 
     /**
      * ********
      * Remove a primeira ocorrência de um dado elemento da lista.
+     *
      * @param element Elemento a ser adicionado.
-     * @return 
+     * @return
      */
-    public E remove(E element);
+    public T remove(T element);
 
     /**
      * ********
@@ -55,7 +50,7 @@ public interface ListTAD<E> {
      * @param pos Posição do elemento na lista.
      * @return Elemento armazenado na lista.
      */
-    public E get(int pos);
+    public T get(int pos);
 
     /**
      * ********
@@ -64,7 +59,7 @@ public interface ListTAD<E> {
      * @param index Posição da lista.
      * @param element Elemento a ser armazenado na lista.
      */
-    public void set(int index, E element);
+    public void set(int index, T element);
 
     /**
      * ********
@@ -73,7 +68,7 @@ public interface ListTAD<E> {
      * @param element Elemento a ser procurado.
      * @return referência para o elemento armazenado na lista.
      */
-    public E search(E element);
+    public T search(T element);
 
     /**
      * ********
@@ -98,7 +93,7 @@ public interface ListTAD<E> {
      * @param element
      * @return A quantidade de ocorrências do elemento fornecido.
      */
-    public int count(E element);
+    public int count(T element);
 
     /**
      * ********
@@ -112,12 +107,11 @@ public interface ListTAD<E> {
      *
      * @return O iterador para a lista.
      */
-    public Iterator<E> iterator();
+    public Iterator<T> iterator();
 
     /**
      * ********
-     * Métodos adicionais, para fins didáticos. 
-********
+     * Métodos adicionais, para fins didáticos. *******
      */
     /**
      * ******
@@ -125,7 +119,7 @@ public interface ListTAD<E> {
      *
      * @param element Elemento a ser adicionado.
      */
-    public void addFirst(E element);
+    public void addFirst(T element);
 
     /**
      * ********
@@ -133,25 +127,28 @@ public interface ListTAD<E> {
      *
      * @param element Elemento a ser adicionado.
      */
-    public void addLast(E element);
+    public void addLast(T element);
 
     /**
      * Remove o elemento armazenado na primeira posição da lista.
+     *
      * @return Elemento removido da lista.
      */
-    public E removeFirst();
+    public T removeFirst();
 
     /**
      * Remove o elemento armazenado na última posição da lista.
-     *@return Elemento removido da lista.
+     *
+     * @return Elemento removido da lista.
      */
-    public E removeLast();
+    public T removeLast();
 
     /**
      * Recupera o elemento armazenado na primeira posição da lista.
+     *
      * @return Elemento armazenado na lista.
      */
-    public E getFirst();
+    public T getFirst();
 
     /**
      * ******
@@ -159,6 +156,6 @@ public interface ListTAD<E> {
      *
      * @return Elemento armazenado na lista.
      */
-    public E getLast();
+    public T getLast();
 
 }

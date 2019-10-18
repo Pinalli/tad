@@ -7,14 +7,14 @@ import java.util.Iterator;
  * @author AlbertoRochaPinalli
  * @param <E>
  */
-public class ListArray<E> implements ListTAD<E> {
+public class ListArrayComVetor<E> implements ListTAD<E> {
 
     private E[] vet;
     private transient E last;
     private static final Integer INITIAL_SIZE = 15;
     private int qntElementos = 0;
 
-    public ListArray(Integer tamanho) {
+    public ListArrayComVetor(Integer tamanho) {
         vet = (E[]) new Object[INITIAL_SIZE];
     }
 
@@ -42,13 +42,15 @@ public class ListArray<E> implements ListTAD<E> {
         vet[index] = element;
     }
 
-    @Override
-    public void addLast(E element) { //ok
-      for (int i = 0; i < vet.length-1; i++) {
-            vet[i] = vet[i + 1];
-            vet[i + 1] = element;
+    @Override   //ok
+    public void addLast(E element) {
+        for (int i = 0; i < vet.length-1; i++) {
+            if (vet[i + 1] == null) {
+                vet[i + 1] = element;
+                
+            }
+            qntElementos++;
         }
-
     }
 
     @Override
@@ -59,6 +61,7 @@ public class ListArray<E> implements ListTAD<E> {
     @Override //ok
     public E remove(int pos) {
         vet[pos] = null;
+        qntElementos--;
         return vet[pos];
 
     }
@@ -70,7 +73,9 @@ public class ListArray<E> implements ListTAD<E> {
                 vet[i] = null;
             }
         }
+        qntElementos--;
         return null;
+
     }
 
     @Override
@@ -80,18 +85,18 @@ public class ListArray<E> implements ListTAD<E> {
 
     @Override
     public E removeLast() {
-        for (int i = 0; i < vet.length-1; i++) {
+        for (int i = 0; i < vet.length - 1; i++) {
             vet[i] = vet[i + 1];
             vet[i + 1] = null;
-               
+
         }
         return null;
-       
+
     }
 
     @Override
     public String toString() {
-        return "Vetor = " + Arrays.toString(vet) + '}' 
+        return "Vetor = " + Arrays.toString(vet) + '}'
                 + "\n Quantidade de elementos = " + qntElementos + '}';
     }
 
@@ -106,7 +111,10 @@ public class ListArray<E> implements ListTAD<E> {
 
     @Override
     public void set(int index, E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (index < 0 || index >= qntElementos) {
+            throw new IndexOutOfBoundsException("Não existe essa posição");
+
+        }
     }
 
     @Override
