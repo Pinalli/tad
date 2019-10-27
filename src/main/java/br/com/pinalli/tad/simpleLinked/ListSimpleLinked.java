@@ -3,34 +3,32 @@ package br.com.pinalli.tad.simpleLinked;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/*https://www.java2novice.com/data-structures-in-java/linked-list/singly-linked-list/
-  http://www.javafree.org/topic-865354-Matriz-esparsas-Vs-Matriz.html
- https://codereview.stackexchange.com/questions/82698/singly-linked-list-in-java
-
- */
 /**
  * @author AlbertoRochaPinalli
  * @param <T>
  */
 public class ListSimpleLinked<T> implements ListTAD<T> {
 
-    private Nodo first, last;// Referência para o primeiro e último elemento da lista encadeada.
+    private Node first, last;// Referência para o primeiro e último elemento da lista encadeada.
     private int count;
 
     public ListSimpleLinked() {
-        first = null;
-        last = null;
+        first = last = null;
         count = 0;
     }
 
-    private class Nodo { //class interna
+    private class Node { //class interna
 
         private T element;
-        private Nodo next;
+        private Node next;
 
-        public Nodo(T e) {
+        public Node(T e, Node n) {
             element = e;
             next = null;
+        }
+
+        private Node(T element) {
+
         }
 
         public T getElement() {
@@ -41,54 +39,148 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
             element = e;
         }
 
-        public Nodo getNext() {
+        public Node getNext() {
             return next;
         }
 
-        public void setNext(Nodo n) {
+        public void setNext(Node n) {
             next = n;
         }
 
     }
 
     @Override
-    public void add(T element) {
-        Nodo novo = new Nodo(element);
-        if (last != null) {
-            last.setNext(novo);
+    public void add(T element) { //Adiciona elementos
+        Node aux = new Node(element);
+        aux.setElement(element);
+
+        if (first == null) {//verifi se a lista está vazia
+            //já que existe apenas um elemento, cabeça 
+            //pontos de cauda para o mesmo objeto.
+            first = aux;
+            last = aux;
         } else {
-            first = novo;
+            //definir o próximo link da cauda atual para o novo nó
+            last.setNext(aux);
+            //definir cauda como nó recém-criado
+            last = aux;
         }
-        last = novo;
         count++;
     }
 
     @Override
-    public void add(int index, T element) {
-
+    public void addFirst(T element) {//OK
+        Node n = new Node(element, null);
+        if (isEmpty()) {
+            last = n;
+        } else {
+            n.next = first;
+        }
+        first = n;
+        count++;
     }
 
     @Override
-    public T remove(T element) {
-        return null;
+    public void addLast(T element) {//OK
+        Node n = new Node(element, null);
+        if (isEmpty()) {
+            first = n;
+        } else {
+            last.next = n;
+        }
+        last = n;
+        count++;
+    }
+
+    @Override
+    public void add(int index, T element) { //OK
+        if (index == 0) {
+            addFirst(element);
+        } else if (index >= count) {
+            addLast(element);
+        } else {
+            Node current = last;
+            for (int i = 1; i < index; i++) {
+                current = current.next;
+            }
+            Node temp = current.next;
+            current.next = new Node(element);
+            (current.next).next = temp;
+            count++;
+        }
+    }
+
+    private Node getNode(int index) {
+        if (index < 0 || index >= count) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node node = first;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
+    }
+
+    @Override
+    public T remove(T element) { //OK
+
+        boolean found = false;
+
+        Node anteriror = null;
+        Node atual = first;
+
+        while (atual != null && !found) {
+            if (element.equals(atual.getElement())) {
+                found = true;
+            } else {
+                anteriror = atual;
+                atual = atual.getNext();
+            }
+        }
+
+        if (size() == 1) {
+            first = last = null;
+        } else if (atual.equals(first)) {
+            first = atual.getNext();
+        } else if (atual.equals(last)) {
+            last = anteriror;
+            last.setNext(null);
+        } else {
+            anteriror.setNext(atual.getNext());
+        }
+
+        count--;
+
+        return atual.getElement();
+
     }
 
     @Override
     public T remove(int pos) {
+
         return null;
     }
 
     @Override
-    public T get(int pos) {
-        return null;
+    public T get(int pos) {//retorna o elemento armazenado na posiçao pos da lista
+        Node aux = first;
+        int i = 0;
+        while (aux != null) {
+            if (aux.getElement().equals(pos)) {
+                aux = aux.getNext();
+            }
+            i++;
+        }
+        return (T) aux;
+
     }
 
     @Override
-    public void set(int index, T element) {
+    public void set(int index, T element) {   //OK
         if ((index < 0) || (index >= count)) {
             throw new IndexOutOfBoundsException();
         }
-        Nodo aux = first;
+        Node aux = first;
         for (int i = 0; i < index; i++) {
             aux = aux.next;
         }
@@ -99,7 +191,7 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     @Override
     public T search(T element) {
-        return null;
+        return element;
     }
 
     @Override
@@ -132,45 +224,66 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
     }
 
     @Override
-    public void addFirst(T element) {
+    public T removeFirst() { //OK
+        T tmp = getFirst();
+        first = first.next;
+        return tmp;
+    }
+
+    @Override
+    public T removeLast() {//OK
+        Node previous = null;
+        Node atual = first;
+
+        while (atual.getNext() != null) {
+            previous = atual;
+            atual = atual.getNext();
+        }
+
+        Node result = last;
+        last = previous;
+        if (last == null) {
+            first = null;
+        } else {
+            last.setNext(null);
+        }
+        count--;
+
+        return last.getElement();
 
     }
 
     @Override
-    public void addLast(T element) {
-
-    }
-
-    @Override
-    public T removeFirst() {
-        return null;
-    }
-
-    @Override
-    public T removeLast() {
-        return null;
-    }
-
-    @Override
-    public T getFirst() {
-        Nodo f = first;
+    public T getFirst() {  //OK
+        Node f = first;
         if (count == 0) {
             throw new NoSuchElementException();
         }
-        return f.next.element;
+        return f.element;
     }
 
     @Override
-    public T getLast() {
-        Nodo l = last;
+    public T getLast() { //OK
+        Node l = last;
 
-        if (l == null)
-
+        if (l == null) {
             throw new NoSuchElementException();
+        }
 
         return l.element;
 
     }
 
-    
+    @Override
+    public String toString() {
+        Node aux = first;
+        String res = "";
+
+        while (aux != null) {
+            res = res + aux.getElement().toString() + " ";
+            aux = aux.getNext();
+        }
+
+        return res;
+    }
 }

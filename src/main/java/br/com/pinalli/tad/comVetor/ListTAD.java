@@ -1,4 +1,4 @@
-package br.com.pinalli.tad;
+package br.com.pinalli.tad.comVetor;
 /*http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/ArrayList.java
 https://courses.cs.washington.edu/courses/cse143/17su/lectures/08-11/collections/LinkedList.java
 https://www.iro.umontreal.ca/~pift1025/bigjava/Ch20/ch20.html   LinkedList
@@ -9,6 +9,7 @@ https://www.cs.wcupa.edu/rkline/ds/linked-lists.html
 https://www.cs.utexas.edu/users/novak/LinkedList.java
 http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/LinkedList.java
 http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/ArrayList.java
+https://liveexample.pearsoncmg.com/html/MyArrayList.html
 /**
 **
  * @author AlbertoRochaPinalli

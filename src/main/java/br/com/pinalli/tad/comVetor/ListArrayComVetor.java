@@ -1,8 +1,6 @@
-package br.com.pinalli.tad;
-
+package br.com.pinalli.tad.comVetor;
 import java.util.Arrays;
 import java.util.Iterator;
-
 /**
  * @author AlbertoRochaPinalli
  * @param <E>

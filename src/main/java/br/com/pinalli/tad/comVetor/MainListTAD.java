@@ -1,4 +1,4 @@
-package br.com.pinalli.tad;
+package br.com.pinalli.tad.comVetor;
 
 /**
  *
