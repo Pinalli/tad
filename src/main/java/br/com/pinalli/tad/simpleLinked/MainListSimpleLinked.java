@@ -1,7 +1,5 @@
 package br.com.pinalli.tad.simpleLinked;
 
-import javax.sound.sampled.SourceDataLine;
-
 /**
  * @author AlbertoRochaPinalli
  */
@@ -11,42 +9,33 @@ public class MainListSimpleLinked {
 
         ListSimpleLinked<String> sl = new ListSimpleLinked<>();
 
-       // sl.add("Alberto");
-       // sl.addFirst("Fiona");
-       // sl.add("Simone");
-       // sl.add("Paula");
-        //   sl.addLast("Atena");
-        //   sl.addLast("Maia");
-      //  sl.add("Belinha");
-
-      //   sl.remove("Alberto");
-      
         sl.add("Alberto");
         sl.add("Simone");
-       sl.add("Belinha");
-       
-        sl.add(2, "Marilia");
+        sl.add("Belinha");
+      
         sl.add("Luca");
-          sl.addLast("Maia");
+      
         sl.addFirst("Mario");
-       
-       
-       // sl.add(5, "Atena");
-      // sl.remove("Alberto");
-      //  sl.remove("Simone");
-         
+        sl.add(3, "Atena");
+        sl.addLast("Maia");
+        sl.add(5, "Fiona");
+        sl.add("Carlos");
+     //   sl.remove(4);
+       // sl.remove(1);
+   //     sl.removeFirst();
+      //  sl.removeLast();
+
         //sl.removeLast();
-       
-       
       //  sl.set(1, "Juca");
         System.out.println("Esta vazia: " + sl.isEmpty());
         System.out.println("Quantidade de elementos: " + sl.size());
         System.out.println("Get primeiro element: " + sl.getFirst());
-       // System.out.println("Get elemen na posição "+ sl.get(1));
+        System.out.println("Get elemen na posição "+ sl.get(5));
         System.out.println("Get ultimo element: " + sl.getLast());
-      //  System.out.println("Search o element "+ sl.removeFirst());
-   
-        System.out.println("Elementos na lista: \n" +sl.toString());
+        System.out.println("Search o element "+ sl.search("Cardoso"));
+        System.out.println("Quantidade de ocorrencias "+ sl.count("Alberto"));
+
+        System.out.println("Elementos na lista: \n" + sl.toString());
 
     }
 }

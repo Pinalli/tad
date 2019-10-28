@@ -22,7 +22,7 @@ public interface ListTAD<T> {
      *
      * @param element Elemento a ser adicionado.
      */
-    public void add(T element);
+    public void add(T element); 
 
     /**
      * ********
@@ -97,7 +97,6 @@ public interface ListTAD<T> {
     /**
      * ******
      * Conta quantas ocorrências de um dado elemento estão armazenadas na lista.
-     *
      * @param element
      * @return A quantidade de ocorrências do elemento fornecido.
      */

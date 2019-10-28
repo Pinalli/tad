@@ -94,31 +94,16 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     @Override
     public void add(int index, T element) { //OK
-        if (index == 0) {
-            addFirst(element);
-        } else if (index >= count) {
-            addLast(element);
-        } else {
-            Node current = last;
-            for (int i = 1; i < index; i++) {
-                current = current.next;
-            }
-            Node temp = current.next;
-            current.next = new Node(element);
-            (current.next).next = temp;
-            count++;
-        }
-    }
-
-    private Node getNode(int index) {
-        if (index < 0 || index >= count) {
+        if ((index < 0) || (index >= count)) {
             throw new IndexOutOfBoundsException();
         }
-        Node node = first;
+        Node aux = first;
         for (int i = 0; i < index; i++) {
-            node = node.next;
+            aux = aux.next;
         }
-        return node;
+
+        aux.element = element;
+
     }
 
     @Override
@@ -156,22 +141,48 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
     }
 
     @Override
-    public T remove(int pos) {
+    public T remove(int pos) {//OK
+if (pos < 0 || pos>= count) {
+            throw new IndexOutOfBoundsException();
+        }
 
-        return null;
+        Node aux = first;
+        if (pos == 0) {
+            if (last == first) // se tiver apenas um elemento
+            {
+                last = null;
+            }
+          first = first.next;
+            count--;
+            return aux.element;
+        }
+        int c = 0;
+        while (c < pos - 1) {
+            aux = aux.next;
+            c++;
+        }
+        T element = aux.next.element;
+        if (last == aux.next) {
+            last = aux;
+        }
+        aux.next = aux.next.next;
+        count--;
+        return element;
+      
     }
 
     @Override
-    public T get(int pos) {//retorna o elemento armazenado na posiçao pos da lista
-        Node aux = first;
-        int i = 0;
-        while (aux != null) {
-            if (aux.getElement().equals(pos)) {
-                aux = aux.getNext();
-            }
-            i++;
+    public T get(int pos) {//OK
+       if ((pos < 0) || (pos >= count)) {
+            throw new IndexOutOfBoundsException();
         }
-        return (T) aux;
+        Node aux = first;
+        int c = 0;
+        while (c < pos) {
+            aux = aux.next;
+            c++;
+        }
+        return (aux.element);
 
     }
 
@@ -196,7 +207,7 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     @Override
     public boolean isEmpty() {
-        return first == null;
+      return first == null;
 
     }
 
@@ -207,9 +218,11 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     @Override
     public int count(T element) {
-        return count;
-    }
-
+         return 0;
+       }
+        
+    
+       
     @Override
     public void clean() {
         first = null;
