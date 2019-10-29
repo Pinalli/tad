@@ -1,5 +1,6 @@
 package br.com.pinalli.tad.simpleLinked;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -49,14 +50,12 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     }
 
-    @Override
-    public void add(T element) { //Adiciona elementos
-        Node aux = new Node(element);
-        aux.setElement(element);
+    @Override           //OK
+    public void add(T e) { //Adiciona elementos no final da lista
+        Node aux = new Node(e);
+        aux.setElement(e);
 
-        if (first == null) {//verifi se a lista está vazia
-            //já que existe apenas um elemento, cabeça 
-            //pontos de cauda para o mesmo objeto.
+        if (first == null) {//verifica se a lista está vazia
             first = aux;
             last = aux;
         } else {
@@ -68,9 +67,20 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
         count++;
     }
 
+    public void add2(T e) {
+        Node novo = new Node(e);
+        if (last != null) {
+            last.setNext(novo);
+        } else {
+            first = novo;
+        }
+        last = novo;
+        count++;
+    }
+
     @Override
-    public void addFirst(T element) {//OK
-        Node n = new Node(element, null);
+    public void addFirst(T e) {//OK
+        Node n = new Node(e, null);
         if (isEmpty()) {
             last = n;
         } else {
@@ -81,8 +91,8 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
     }
 
     @Override
-    public void addLast(T element) {//OK
-        Node n = new Node(element, null);
+    public void addLast(T e) {//OK
+        Node n = new Node(e, null);
         if (isEmpty()) {
             first = n;
         } else {
@@ -93,7 +103,7 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
     }
 
     @Override
-    public void add(int index, T element) { //OK
+    public void add(int index, T e) { //OK
         if ((index < 0) || (index >= count)) {
             throw new IndexOutOfBoundsException();
         }
@@ -102,47 +112,13 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
             aux = aux.next;
         }
 
-        aux.element = element;
-
-    }
-
-    @Override
-    public T remove(T element) { //OK
-
-        boolean found = false;
-
-        Node anteriror = null;
-        Node atual = first;
-
-        while (atual != null && !found) {
-            if (element.equals(atual.getElement())) {
-                found = true;
-            } else {
-                anteriror = atual;
-                atual = atual.getNext();
-            }
-        }
-
-        if (size() == 1) {
-            first = last = null;
-        } else if (atual.equals(first)) {
-            first = atual.getNext();
-        } else if (atual.equals(last)) {
-            last = anteriror;
-            last.setNext(null);
-        } else {
-            anteriror.setNext(atual.getNext());
-        }
-
-        count--;
-
-        return atual.getElement();
+        aux.element = e;
 
     }
 
     @Override
     public T remove(int pos) {//OK
-if (pos < 0 || pos>= count) {
+        if (pos < 0 || pos >= count) {
             throw new IndexOutOfBoundsException();
         }
 
@@ -152,7 +128,7 @@ if (pos < 0 || pos>= count) {
             {
                 last = null;
             }
-          first = first.next;
+            first = first.next;
             count--;
             return aux.element;
         }
@@ -168,12 +144,46 @@ if (pos < 0 || pos>= count) {
         aux.next = aux.next.next;
         count--;
         return element;
-      
+
+    }
+
+    @Override
+    public T remove(T e) { //OK
+
+        boolean found = false;
+
+        Node anterior = null;
+        Node atual = first;
+
+        while (atual != null && !found) {
+            if (e.equals(atual.getElement())) {
+                found = true;
+            } else {
+                anterior = atual;
+                atual = atual.getNext();
+            }
+        }
+
+        if (size() == 1) {
+            first = last = null;
+        } else if (atual.equals(first)) {
+            first = atual.getNext();
+        } else if (atual.equals(last)) {
+            last = anterior;
+            last.setNext(null);
+        } else {
+            anterior.setNext(atual.getNext());
+        }
+
+        count--;
+
+        return atual.getElement();
+
     }
 
     @Override
     public T get(int pos) {//OK
-       if ((pos < 0) || (pos >= count)) {
+        if ((pos < 0) || (pos >= count)) {
             throw new IndexOutOfBoundsException();
         }
         Node aux = first;
@@ -187,7 +197,7 @@ if (pos < 0 || pos>= count) {
     }
 
     @Override
-    public void set(int index, T element) {   //OK
+    public void set(int index, T e) {   //OK
         if ((index < 0) || (index >= count)) {
             throw new IndexOutOfBoundsException();
         }
@@ -196,18 +206,30 @@ if (pos < 0 || pos>= count) {
             aux = aux.next;
         }
         T tmp = (T) aux.element;
-        aux.element = element;
+        aux.element = e;
 
     }
 
+    public boolean contains(T e) { //OK
+        Node aux;
+        aux = first;
+        while (aux != null) {
+            if (aux.getElement().equals(e)) {
+                return true;
+            }
+            aux = aux.getNext();
+        }
+        return false;
+    }
+
     @Override
-    public T search(T element) {
-        return element;
+    public T search(T e) {
+        return e;
     }
 
     @Override
     public boolean isEmpty() {
-      return first == null;
+        return first == null;
 
     }
 
@@ -217,14 +239,21 @@ if (pos < 0 || pos>= count) {
     }
 
     @Override
-    public int count(T element) {
-         return 0;
-       }
-        
-    
-       
+    public int count(T e) {//OK
+        int soma = 0;
+        Node aux;
+        aux = first;
+        while (aux != null) {
+            if (aux.getElement().equals(e)) {
+                soma++;
+            }
+            aux = aux.getNext();
+        }
+        return soma;
+    }
+
     @Override
-    public void clean() {
+    public void clean() { //OK
         first = null;
         last = null;
         count = 0;
@@ -293,7 +322,7 @@ if (pos < 0 || pos>= count) {
         String res = "";
 
         while (aux != null) {
-            res = res + aux.getElement().toString() + " ";
+            res = res + aux.getElement().toString() + " - ";
             aux = aux.getNext();
         }
 

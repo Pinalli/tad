@@ -11,29 +11,32 @@ public class MainListSimpleLinked {
 
         sl.add("Alberto");
         sl.add("Simone");
+        //     sl.add("Alberto");
         sl.add("Belinha");
-      
+        sl.add("Alberto");
         sl.add("Luca");
-      
+
         sl.addFirst("Mario");
         sl.add(3, "Atena");
         sl.addLast("Maia");
         sl.add(5, "Fiona");
         sl.add("Carlos");
-     //   sl.remove(4);
-       // sl.remove(1);
-   //     sl.removeFirst();
-      //  sl.removeLast();
+        // sl.add("Alberto");
+        //   sl.remove(4);
+        // sl.remove(1);
+        //     sl.removeFirst();
+        //  sl.removeLast();
 
         //sl.removeLast();
-      //  sl.set(1, "Juca");
+        //  sl.set(1, "Juca");
         System.out.println("Esta vazia: " + sl.isEmpty());
+        System.out.println("Contem o elemento? " + sl.contains("Alberto"));
         System.out.println("Quantidade de elementos: " + sl.size());
         System.out.println("Get primeiro element: " + sl.getFirst());
-        System.out.println("Get elemen na posição "+ sl.get(5));
+        //   System.out.println("Get elemen na posição "+ sl.get(5));
         System.out.println("Get ultimo element: " + sl.getLast());
-        System.out.println("Search o element "+ sl.search("Cardoso"));
-        System.out.println("Quantidade de ocorrencias "+ sl.count("Alberto"));
+        System.out.println("Search o element " + sl.search("Cardoso"));
+        System.out.println("Quantidade de ocorrencias " + sl.count("Alberto"));
 
         System.out.println("Elementos na lista: \n" + sl.toString());
 
