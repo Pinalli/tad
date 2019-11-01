@@ -1,6 +1,5 @@
 package br.com.pinalli.tad.simpleLinked;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -22,10 +21,12 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
         private T element;
         private Node next;
+        private Node prev;
 
         public Node(T e, Node n) {
-            element = e;
-            next = null;
+            this.element = e;
+            this.next = n;
+
         }
 
         private Node(T element) {
@@ -50,7 +51,7 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     }
 
-    @Override           //OK
+  /*  @Override           //OK
     public void add(T e) { //Adiciona elementos no final da lista
         Node aux = new Node(e);
         aux.setElement(e);
@@ -65,9 +66,10 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
             last = aux;
         }
         count++;
-    }
+    }*/
 
-    public void add2(T e) {
+    @Override
+    public void add(T e) {
         Node novo = new Node(e);
         if (last != null) {
             last.setNext(novo);
@@ -80,14 +82,12 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     @Override
     public void addFirst(T e) {//OK
-        Node n = new Node(e, null);
-        if (isEmpty()) {
-            last = n;
-        } else {
-            n.next = first;
-        }
-        first = n;
-        count++;
+        
+     Node novo = new Node(e);
+       novo.element = e;
+       novo.next = first;
+       first = novo;
+       count++;
     }
 
     @Override
@@ -112,7 +112,7 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
             aux = aux.next;
         }
 
-        aux.element = e;
+       first.element = e;
 
     }
 
@@ -193,7 +193,6 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
             c++;
         }
         return (aux.element);
-
     }
 
     @Override
@@ -254,8 +253,7 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     @Override
     public void clean() { //OK
-        first = null;
-        last = null;
+        this.first = null;
         count = 0;
     }
 
@@ -266,10 +264,12 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
     }
 
     @Override
-    public T removeFirst() { //OK
-        T tmp = getFirst();
+    public T removeFirst() {
+        T temp = getFirst();
         first = first.next;
-        return tmp;
+        count--;
+        return temp;
+
     }
 
     @Override
@@ -297,11 +297,11 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     @Override
     public T getFirst() {  //OK
-        Node f = first;
-        if (count == 0) {
-            throw new NoSuchElementException();
+        if (first == null) {
+            return null;
+        
         }
-        return f.element;
+        return first.element;
     }
 
     @Override
