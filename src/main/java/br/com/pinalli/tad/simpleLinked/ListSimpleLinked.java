@@ -30,7 +30,7 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
         }
 
         private Node(T element) {
-
+            this.element = element;
         }
 
         public T getElement() {
@@ -51,7 +51,7 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     }
 
-  /*  @Override           //OK
+    /*  @Override           //OK
     public void add(T e) { //Adiciona elementos no final da lista
         Node aux = new Node(e);
         aux.setElement(e);
@@ -67,7 +67,6 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
         }
         count++;
     }*/
-
     @Override
     public void add(T e) {
         Node novo = new Node(e);
@@ -83,11 +82,11 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
     @Override
     public void addFirst(T e) {//OK
         
-     Node novo = new Node(e);
-       novo.element = e;
-       novo.next = first;
-       first = novo;
-       count++;
+        Node n = new Node(e);
+       
+        n.next = first;
+        first = n;
+        count++;
     }
 
     @Override
@@ -106,14 +105,24 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
     public void add(int index, T e) { //OK
         if ((index < 0) || (index >= count)) {
             throw new IndexOutOfBoundsException();
-        }
-        Node aux = first;
-        for (int i = 0; i < index; i++) {
-            aux = aux.next;
-        }
+        } else {
+            Node temp = new Node(e);
+            Node curr = first;
 
-       first.element = e;
+            if (index == 0) {
+                temp.setNext(first);
+                this.first = temp;
+            } else {
+                for (int i = 1; i < index; i++) {
+                    curr = curr.getNext();
+                }
+                temp.setNext(curr.getNext());
+                curr.setNext(temp);
+            }
 
+            count++;
+
+        }
     }
 
     @Override
@@ -147,40 +156,7 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     }
 
-    @Override
-    public T remove(T e) { //OK
-
-        boolean found = false;
-
-        Node anterior = null;
-        Node atual = first;
-
-        while (atual != null && !found) {
-            if (e.equals(atual.getElement())) {
-                found = true;
-            } else {
-                anterior = atual;
-                atual = atual.getNext();
-            }
-        }
-
-        if (size() == 1) {
-            first = last = null;
-        } else if (atual.equals(first)) {
-            first = atual.getNext();
-        } else if (atual.equals(last)) {
-            last = anterior;
-            last.setNext(null);
-        } else {
-            anterior.setNext(atual.getNext());
-        }
-
-        count--;
-
-        return atual.getElement();
-
-    }
-
+ 
     @Override
     public T get(int pos) {//OK
         if ((pos < 0) || (pos >= count)) {
@@ -262,10 +238,46 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
         return null;
 
     }
+   @Override
+    public T remove(T e) { //OK
+
+        boolean found = false;
+
+        Node anterior = null;
+        Node atual = first;
+
+        while (atual != null && !found) {
+            if (e.equals(atual.getElement())) {
+                found = true;
+            } else {
+                anterior = atual;
+                atual = atual.getNext();
+            }
+        }
+
+        if (size() == 1) {
+            first = last = null;
+        } else if (atual.equals(first)) {
+            first = atual.getNext();
+        } else if (atual.equals(last)) {
+            last = anterior;
+            last.setNext(null);
+        } else {
+            anterior.setNext(atual.getNext());
+        }
+
+        count--;
+
+        return (T) atual.getElement();
+
+    }
 
     @Override
     public T removeFirst() {
         T temp = getFirst();
+        if (first == null) {
+            return null;
+        }
         first = first.next;
         count--;
         return temp;
@@ -274,24 +286,35 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
     @Override
     public T removeLast() {//OK
-        Node previous = null;
-        Node atual = first;
-
-        while (atual.getNext() != null) {
-            previous = atual;
-            atual = atual.getNext();
+        if (isEmpty()) {
+            throw new NoSuchElementException();
         }
 
-        Node result = last;
-        last = previous;
-        if (last == null) {
+        T removedElement;
+
+        if (first.next == null) {
+
+            removedElement = first.element;
+
             first = null;
+
         } else {
-            last.setNext(null);
+
+            Node temp = first;
+
+            while (temp.next.next != null) {
+                temp = temp.next;
+            }
+
+            removedElement = temp.next.element;
+
+            temp.next = null;
+
         }
+
         count--;
 
-        return last.getElement();
+        return removedElement;
 
     }
 
@@ -299,8 +322,7 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
     public T getFirst() {  //OK
         if (first == null) {
             return null;
-        
-        }
+           }
         return first.element;
     }
 
@@ -309,23 +331,43 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
         Node l = last;
 
         if (l == null) {
-            throw new NoSuchElementException();
+
+            if (first == null) {
+                return null;
+            } else {
+                return first.element;
+            }
+
         }
 
-        return l.element;
+        return l.getElement();
 
     }
 
+    /* @Override
+    public String toString() {
+
+        Node curr = first;
+        String result = "";
+
+        while (curr != null) {
+
+            result += curr.element + " - ";
+        }
+        return result;
+
+    }*/
     @Override
     public String toString() {
-        Node aux = first;
-        String res = "";
+        Node current = first;
+        String result = "";
 
-        while (aux != null) {
-            res = res + aux.getElement().toString() + " - ";
-            aux = aux.getNext();
+        while (current != null) {
+            result = result + (current.getElement()).toString();
+            current = current.getNext();
         }
 
-        return res;
+        return result;
+
     }
 }

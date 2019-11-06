@@ -1,9 +1,14 @@
 /*https://www.java2novice.com/data-structures-in-java/linked-list/singly-linked-list/
   http://www.javafree.org/topic-865354-Matriz-esparsas-Vs-Matriz.html
- https://codereview.stackexchange.com/questions/82698/singly-linked-list-in-java
-http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/9b8c96f96a0f/src/share/classes/java/util/LinkedList.java
-http://faculty.washington.edu/moishe/javademos/ch08 Code/jss2/LinkedList.java
-http://www.cs.ucc.ie/~dgb/courses/ood/ood3/SinglyLinkedList.java*/
+  https://codereview.stackexchange.com/questions/82698/singly-linked-list-in-java
+  http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/9b8c96f96a0f/src/share/classes/java/util/LinkedList.java
+  http://faculty.washington.edu/moishe/javademos/ch08 Code/jss2/LinkedList.java
+  http://www.cs.ucc.ie/~dgb/courses/ood/ood3/SinglyLinkedList.java
+  https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html
+  https://www.devmedia.com.br/java-collections-como-utilizar-collections/18450 
+  https://www.baeldung.com/java-linkedlist
+  https://www.callicoder.com/java-linkedlist/ 
+  https://beginnersbook.com/2013/12/linkedlist-in-java-with-example/ */
 
 
 package br.com.pinalli.tad.simpleLinked;

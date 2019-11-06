@@ -13,46 +13,47 @@ public class ListTADTest {
     public ListTADTest() {
     }
 
-    private ListTAD<String> myList = new ListSimpleLinked<>();
-    //private ListTAD<String> myList = new ListDoubleLinked<String>();
-    //private ListArray<String> myList = new ListArray<String>(10);
+    
+	private ListTAD<String> myList = new ListSimpleLinked<>();
+	//private ListTAD<String> myList = new ListDoubleLinked<String>();
+	//private ListArray<String> myList = new ListArray<String>(10);
+	
+	@Before
+	public void limpaLst() {
+		myList.clean();
+		assertEquals("Deve estar vazia: ", true, myList.isEmpty());
+		assertEquals("Deve ter 0 elementos: ", 0, myList.size());
+	}
+	
+	@Test
+	public final void testSize() {
+		assertEquals("Deve ter 0 elementos: ", 0, myList.size());
+		
+		myList.add("0");
+		assertEquals("Size 1 = ", 1, myList.size());
+		
+		myList.add("2");
+		assertEquals("Size 2 = ", 2, myList.size());
+		
+		myList.clean();
+		assertEquals("Size 0 = ", 0, myList.size());
+	}
 
-    @Before
-    public void limpaLst() {
-        myList.clean();
-        assertEquals("Deve estar vazia: ", true, myList.isEmpty());
-        assertEquals("Deve ter 0 elementos: ", 0, myList.size());
-    }
+	@Test
+	public final void testAddD() {
+		myList.add("0");
+		assertEquals("Primeiro Elem:", "0", myList.getFirst());
+		assertEquals("Ultimo Elem:", "0", myList.getLast());
+		
+		myList.add("1");
+		myList.add("2");
+		myList.add("3");
+		myList.add("4");
+		assertEquals("01234", myList.toString());
+		assertEquals("Ultimo Elem:", "4", myList.getLast());
+	}
 
-   /* @Test
-    public final void testSize() {
-        assertEquals("Deve ter 0 elementos: ", 0, myList.size());
-
-        myList.add("0");
-        assertEquals("Size 1 = ", 1, myList.size());
-
-        myList.add("2");
-        assertEquals("Size 2 = ", 2, myList.size());
-
-        myList.clean();
-        assertEquals("Size 0 = ", 0, myList.size());
-    }
-*/
-    @Test
-    public final void testAddD() {
-        myList.add("0");
-        assertEquals("Primeiro Elem:", "0", myList.getFirst());
-        assertEquals("Ultimo Elem:", "0", myList.getLast());
-
-        myList.add("1");
-        myList.add("2");
-        myList.add("3");
-        myList.add("4");
-        assertEquals("01234", myList.toString());
-        assertEquals("Ultimo Elem:", "4", myList.getLast());
-    }
-
-    @Test
+	@Test
 	public final void testCount() {
 		assertEquals("Lista Vazia ", 0, myList.count("X"));
 
@@ -69,8 +70,8 @@ public class ListTADTest {
 		myList.add("X");
 		assertEquals("Nove na lista ", 4, myList.count("X"));
 	}
-    
-    @Test(expected = IndexOutOfBoundsException.class)
+
+	@Test(expected = IndexOutOfBoundsException.class)
 	public final void testGetExc1(){
 		myList.get(0);
 	}
@@ -109,7 +110,8 @@ public class ListTADTest {
 		assertEquals("Pega 8 ", "8", myList.get(8));
 		myList.get(9);	
 	}	
-        @Test
+
+	@Test
 	public final void testGetFirst() {
 		assertEquals("Vazia:", null, myList.getFirst());
 		
@@ -122,7 +124,7 @@ public class ListTADTest {
 		assertEquals("Vazia:", "0", myList.getFirst());
 	}
 
-/*	@Test
+	@Test
 	public final void testGetLast() {
 		assertEquals("Vazia:", null, myList.getLast());
 		
@@ -135,7 +137,7 @@ public class ListTADTest {
 		assertEquals("Vazia:", "3", myList.getLast());
 
 	}
-*/
+
 	@Test
 	public final void testAddFirst() {
 		myList.addFirst("0");
@@ -148,7 +150,8 @@ public class ListTADTest {
 		assertEquals("Ultimo Elem:", "0", myList.getLast());
 		assertEquals("Qtde 2:", 2, myList.size());
 	}
-@Test
+
+	@Test
 	public final void testAddLast() {
 		myList.addLast("0");
 		assertEquals("Primeiro Elem:", "0", myList.getFirst());
@@ -205,7 +208,8 @@ public class ListTADTest {
 		assertEquals("Ultimo Elem:", "5", myList.getLast());
 
 	}
-        @Test(expected=IndexOutOfBoundsException.class)
+
+	@Test(expected=IndexOutOfBoundsException.class)
 	public final void testRemoveInt1() {
 		myList.remove(0);
 	}
@@ -241,12 +245,12 @@ public class ListTADTest {
 		myList.addLast("6");
 		
 		res = myList.remove(0);
-		assertEquals("Nao fica vazia:", false, myList.isEmpty());
+		assertEquals("N�o fica vazia:", false, myList.isEmpty());
 		assertEquals("6 elementos:", 6, myList.size());
 		assertEquals("Retorno: ", "0", res);
 		
 		res = myList.remove(5);
-		assertEquals("Nao fica vazia:", false, myList.isEmpty());
+		assertEquals("N�o fica vazia:", false, myList.isEmpty());
 		assertEquals("5 elementos:", 5, myList.size());
 		assertEquals("Retorno: ", "6", res);
 		assertEquals("Retorno getLast: ", "5", myList.getLast());
@@ -255,7 +259,7 @@ public class ListTADTest {
 			assertEquals("Valor " + i, String.valueOf(i+1), myList.get(i));
 		
 		res = myList.remove(3);
-		assertEquals("Nao fica vazia:", false, myList.isEmpty());
+		assertEquals("N�o fica vazia:", false, myList.isEmpty());
 		assertEquals("4 elementos:", 4, myList.size());
 		assertEquals("Elemento 2 � 3", "3", myList.get(2));
 		assertEquals("Elemento 3 � 5", "5", myList.get(3));
@@ -281,7 +285,7 @@ public class ListTADTest {
 		myList.addFirst("1");
 		myList.addFirst("0");
 		res = myList.removeFirst();
-		assertEquals("Nao fica vazia:", false, myList.isEmpty());
+		assertEquals("N�o fica vazia:", false, myList.isEmpty());
 		assertEquals("1 elementos:", 1, myList.size());
 		assertEquals("Retorno: ", "0", res);
 		assertEquals("Retorno getLast: ", "1", myList.getLast());
@@ -305,7 +309,7 @@ public class ListTADTest {
 		myList.addFirst("1");
 		myList.addFirst("0");
 		res = myList.removeLast();
-		assertEquals("Nao fica vazia:", false, myList.isEmpty());
+		assertEquals("N�o fica vazia:", false, myList.isEmpty());
 		assertEquals("1 elementos:", 1, myList.size());
 		assertEquals("Retorno: ", "1", res);
 		assertEquals("Retorno getLast: ", "0", myList.getLast());
@@ -371,4 +375,4 @@ public class ListTADTest {
 		assertEquals("Deve estar vazia: ", true, myList.isEmpty());
 	}
 
-    }
+}
