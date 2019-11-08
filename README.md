@@ -1,5 +1,5 @@
 # Torre de Hanoi
-## Jogo Torre de hanói - trabalho para a cadeira de Algoritimos e estrutura de dados do curso de Engenharia de Software na PUCRS
+## Jogo Torre de hanói - Trabalho para a cadeira de Algoritimos e estrutura de dados do curso de Engenharia de Software na PUCRS
 ## Sobre o jogo
 ## Descrição: 
 O jogo da Torre de Hanói é um "quebra-cabeça" que consiste em uma base
