@@ -1,4 +1,5 @@
 
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -98,9 +99,9 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 
 	    mostraTorreA();
 	    mostraTorreB();
-	    //  mostraTorreC();
+	    mostraTorreC();
 
-	} catch (Exception e) {
+	} catch (NumberFormatException e) {
 	    System.out.println("Error: " + e.getMessage());
 	}
     }
@@ -197,6 +198,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
         btnReiniciar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,6 +215,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tb_torreA.setFont(new java.awt.Font("Tempus Sans ITC", 0, 16)); // NOI18N
         tb_torreA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -265,6 +268,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
             tb_torreC.getColumnModel().getColumn(0).setResizable(false);
         }
 
+        tb_torreB.setFont(new java.awt.Font("Tempus Sans ITC", 0, 16)); // NOI18N
         tb_torreB.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -343,15 +347,15 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
         lblMimMovimentos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMimMovimentos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabel3.setText("Numero Minimo de Mov");
+        jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 16)); // NOI18N
+        jLabel3.setText("Número Minimo de Mov");
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
-        jLabel4.setText("Numero de Discos");
+        jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 16)); // NOI18N
+        jLabel4.setText("Número de Discos");
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tempus Sans ITC", 1, 16)); // NOI18N
         jLabel5.setText("Numero de Movimentos");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -369,18 +373,13 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        jLabel1.setText("TORRE DE HANOI");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -415,11 +414,24 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnC_B)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -450,7 +462,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIniciar)
                     .addComponent(btnReiniciar))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -477,6 +489,12 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 		mostraTorreA();
 		mostraTorreB();
 		QuantidaDeMovimento();
+                if (Torre_B.getCont() == objetivo && contaMov == numMinMov) {
+		    JOptionPane.showMessageDialog(null, "Parabéns, alcançou o objetivo de minimos movimentos!\n\n Tenta outro nível de dificuldade", "Parabéns", JOptionPane.WARNING_MESSAGE);
+
+		} else if (Torre_B.getCont() == objetivo && contaMov != numMinMov) {
+		    JOptionPane.showMessageDialog(null, "Oh não,ultrapassou o mínimo de movimentos\n\nTenta superar o objetivo ", "Boa sorte", JOptionPane.INFORMATION_MESSAGE);
+		}
 	    }
 	} catch (Exception e) {
 	}
@@ -517,7 +535,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 		}
 
 	    }
-	} catch (Exception e) {
+	} catch (HeadlessException e) {
 	}
     }
 
@@ -543,8 +561,14 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 		mostraTorreA();
 		mostraTorreB();
 		QuantidaDeMovimento();
+                if (Torre_A.getCont() == objetivo && contaMov == numMinMov) {
+		    JOptionPane.showMessageDialog(null, "Parabéns, alcançou o objetivo de minimos movimentos!\n\n Tenta outro nível de dificuldade", "Parabéns", JOptionPane.WARNING_MESSAGE);
+
+		} else if (Torre_A.getCont() == objetivo && contaMov != numMinMov) {
+		    JOptionPane.showMessageDialog(null, "Oh não,ultrapassou o mínimo de movimentos\n\nTenta superar o objetivo ", "Boa sorte", JOptionPane.INFORMATION_MESSAGE);
+		}
 	    }
-	} catch (Exception e) {
+	} catch (HeadlessException e) {
 	}
 
     }
@@ -579,7 +603,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 		}
 
 	    }
-	} catch (Exception e) {
+	} catch (HeadlessException e) {
 	}
     }
     private void btnB_CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnB_CActionPerformed
@@ -670,11 +694,9 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 	//</editor-fold>
 
 	/* Create and display the form */
-	java.awt.EventQueue.invokeLater(new Runnable() {
-	    public void run() {
-		new TelaPRINCIPAL().setVisible(true);
-	    }
-	});
+	java.awt.EventQueue.invokeLater(() -> {
+            new TelaPRINCIPAL().setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -687,6 +709,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnReiniciar;
     private javax.swing.JComboBox<String> cbNumDisco;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
