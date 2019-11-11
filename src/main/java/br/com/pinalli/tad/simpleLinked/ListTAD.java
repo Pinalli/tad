@@ -8,7 +8,9 @@
   https://www.devmedia.com.br/java-collections-como-utilizar-collections/18450 
   https://www.baeldung.com/java-linkedlist
   https://www.callicoder.com/java-linkedlist/ 
-  https://beginnersbook.com/2013/12/linkedlist-in-java-with-example/ */
+  https://beginnersbook.com/2013/12/linkedlist-in-java-with-example/ 
+  http://www.docjar.com/docs/api/java/util/LinkedList.html#pop
+  http://www-labs.iro.umontreal.ca/~pift1025/bigjava/Ch22/code/genlist/LinkedList.java.html*/
 
 
 package br.com.pinalli.tad.simpleLinked;

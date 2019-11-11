@@ -3,7 +3,8 @@
  https://codereview.stackexchange.com/questions/82698/singly-linked-list-in-java
 http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/9b8c96f96a0f/src/share/classes/java/util/LinkedList.java
 http://faculty.washington.edu/moishe/javademos/ch08 Code/jss2/LinkedList.java
-http://www.cs.ucc.ie/~dgb/courses/ood/ood3/SinglyLinkedList.java*/
+http://www.cs.ucc.ie/~dgb/courses/ood/ood3/SinglyLinkedList.java
+https://github.com/AllenDowney/ThinkDataStructures/blob/master/solutions/src/com/allendowney/thinkdast/MyLinkedList.java*/
 
 
 package br.com.pinali.tad.files;

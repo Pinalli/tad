@@ -1,5 +1,7 @@
+
 import br.com.pinalli.tad.simpleLinked.ListSimpleLinked;
 import br.com.pinalli.tad.simpleLinked.ListTAD;
+
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -13,8 +15,8 @@ public class ListTADTest {
     public ListTADTest() {
     }
 
-    
-	private ListTAD<String> myList = new ListSimpleLinked<>();
+       private ListTAD<String> myList = new ListSimpleLinked<>();
+   
 	//private ListTAD<String> myList = new ListDoubleLinked<String>();
 	//private ListArray<String> myList = new ListArray<String>(10);
 	
@@ -318,9 +320,9 @@ public class ListTADTest {
 	@Test
 	public final void testRemoveD() {
 		String res;
-		String x = new String("X");
-		String x1 = new String("X");
-		String x2 = new String("X");
+		String x = "X";
+		String x1 = "X";
+		String x2 = "X";
 		
 		res = myList.remove("X");
 		assertEquals("Retorno: ", null, res);
@@ -374,5 +376,4 @@ public class ListTADTest {
 		myList.remove(0);
 		assertEquals("Deve estar vazia: ", true, myList.isEmpty());
 	}
-
 }
