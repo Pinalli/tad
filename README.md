@@ -27,7 +27,7 @@ a nova configuração dos pinos;
 4. Contar e exibir a quantidade de movimentos executados até o momento;
 5. Identificar quando os pinos estão na configuração final, que determina o final da
 partida.
-## Requisitos adicionais:
+### Requisitos adicionais:
 Deve-se observar as seguintes orientações:
 1. Utilizar o T.A.D. Pilha para implementar e controlar os pinos;
 2. A interface com o usuário pode ser textual ou gráfica.
