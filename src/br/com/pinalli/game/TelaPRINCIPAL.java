@@ -1,3 +1,5 @@
+package br.com.pinalli.game;
+
 
 import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
@@ -214,6 +216,8 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 102, 102));
+        setPreferredSize(new java.awt.Dimension(631, 571));
 
         tb_torreA.setFont(new java.awt.Font("Tempus Sans ITC", 0, 16)); // NOI18N
         tb_torreA.setModel(new javax.swing.table.DefaultTableModel(
@@ -347,18 +351,19 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
         lblMimMovimentos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMimMovimentos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 16)); // NOI18N
-        jLabel3.setText("Número Minimo de Mov");
+        jLabel3.setFont(new java.awt.Font("Calibri Light", 1, 16)); // NOI18N
+        jLabel3.setText("Nº máximo de movimentos");
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Calibri Light", 1, 16)); // NOI18N
         jLabel4.setText("Número de Discos");
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel5.setFont(new java.awt.Font("Tempus Sans ITC", 1, 16)); // NOI18N
-        jLabel5.setText("Numero de Movimentos");
+        jLabel5.setFont(new java.awt.Font("Calibri Light", 1, 16)); // NOI18N
+        jLabel5.setText("Nº de movimentos");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        btnIniciar.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         btnIniciar.setText("Iniciar");
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -366,6 +371,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
             }
         });
 
+        btnReiniciar.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
         btnReiniciar.setText("Reiniciar");
         btnReiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -373,96 +379,98 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
-        jLabel1.setText("TORRE DE HANOI");
+        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 0, 0));
+        jLabel1.setText("TORRE DE HANÓI");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblNumMovimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lblMimMovimentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cbNumDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(89, 89, 89)
-                            .addComponent(btnIniciar)
-                            .addGap(156, 156, 156)
-                            .addComponent(btnReiniciar)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnA_B)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnA_C)
-                        .addGap(154, 154, 154)
-                        .addComponent(btnB_A)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnB_C)
-                        .addGap(152, 152, 152)
-                        .addComponent(btnC_A)))
-                .addGap(18, 18, 18)
+                .addGap(58, 58, 58)
+                .addComponent(btnA_B)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnA_C)
+                .addGap(110, 110, 110)
+                .addComponent(btnB_A)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnB_C)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnC_A)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnC_B)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGap(65, 65, 65))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(211, 211, 211)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnIniciar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnReiniciar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblNumMovimentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblMimMovimentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbNumDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(35, 35, 35))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(49, 49, 49)
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnA_B)
+                        .addComponent(btnA_C, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnC_A)
+                        .addComponent(btnC_B))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnB_A)
+                        .addComponent(btnB_C)))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbNumDisco, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblMimMovimentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNumMovimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnB_A)
-                    .addComponent(btnB_C)
-                    .addComponent(btnC_A)
-                    .addComponent(btnC_B)
-                    .addComponent(btnA_B)
-                    .addComponent(btnA_C))
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbNumDisco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblMimMovimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addComponent(lblNumMovimentos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIniciar)
-                    .addComponent(btnReiniciar))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(btnReiniciar)
+                    .addComponent(btnIniciar))
+                .addGap(90, 90, 90))
         );
 
         pack();
@@ -490,13 +498,13 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 		mostraTorreB();
 		QuantidaDeMovimento();
                 if (Torre_B.getCont() == objetivo && contaMov == numMinMov) {
-		    JOptionPane.showMessageDialog(null, "Parabéns, alcançou o objetivo de minimos movimentos!\n\n Tenta outro nível de dificuldade", "Parabéns", JOptionPane.WARNING_MESSAGE);
+		    JOptionPane.showMessageDialog(null, "Parabéns, você alcançou o objetivo de minimos movimentos!\n\n Tenta outro nível de dificuldade", "Parabéns", JOptionPane.WARNING_MESSAGE);
 
 		} else if (Torre_B.getCont() == objetivo && contaMov != numMinMov) {
-		    JOptionPane.showMessageDialog(null, "Oh não,ultrapassou o mínimo de movimentos\n\nTenta superar o objetivo ", "Boa sorte", JOptionPane.INFORMATION_MESSAGE);
+		    JOptionPane.showMessageDialog(null, "Oh não!!!,você ultrapassou o mínimo de movimentos\n\nTenta superar o objetivo! ", "\nBoa sorte!", JOptionPane.INFORMATION_MESSAGE);
 		}
 	    }
-	} catch (Exception e) {
+	} catch (HeadlessException e) {
 	}
     }
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
@@ -528,10 +536,10 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 		QuantidaDeMovimento();
 
 		if (Torre_C.getCont() == objetivo && contaMov == numMinMov) {
-		    JOptionPane.showMessageDialog(null, "Parabéns, alcançou o objetivo de minimos movimentos!\n\n Tenta outro nível de dificuldade", "Parabéns", JOptionPane.WARNING_MESSAGE);
+		    JOptionPane.showMessageDialog(null, "Parabéns!,\n Você alcançou o objetivo de minimos movimentos!\n\n Tenta outro nível de dificuldade", "Parabéns!!", JOptionPane.WARNING_MESSAGE);
 
 		} else if (Torre_C.getCont() == objetivo && contaMov != numMinMov) {
-		    JOptionPane.showMessageDialog(null, "Oh não,ultrapassou o mínimo de movimentos\n\nTenta superar o objetivo ", "Boa sorte", JOptionPane.INFORMATION_MESSAGE);
+		    JOptionPane.showMessageDialog(null, "Oh não!!!,\n Você ultrapassou o mínimo de movimentos\n\nTenta superar o objetivo ", "\nBoa sorte!", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 	    }
@@ -562,10 +570,10 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 		mostraTorreB();
 		QuantidaDeMovimento();
                 if (Torre_A.getCont() == objetivo && contaMov == numMinMov) {
-		    JOptionPane.showMessageDialog(null, "Parabéns, alcançou o objetivo de minimos movimentos!\n\n Tenta outro nível de dificuldade", "Parabéns", JOptionPane.WARNING_MESSAGE);
+		    JOptionPane.showMessageDialog(null, "Parabéns!!!,\nVocê alcançou o objetivo de minimos movimentos\n\n Tente outro nível de dificuldade", "Parabéns!", JOptionPane.WARNING_MESSAGE);
 
 		} else if (Torre_A.getCont() == objetivo && contaMov != numMinMov) {
-		    JOptionPane.showMessageDialog(null, "Oh não,ultrapassou o mínimo de movimentos\n\nTenta superar o objetivo ", "Boa sorte", JOptionPane.INFORMATION_MESSAGE);
+		    JOptionPane.showMessageDialog(null, "Oh não!!!,\nVocê ultrapassou o mínimo de movimentos\n\nTente superar o objetivo ", "\nBoa sorte!", JOptionPane.INFORMATION_MESSAGE);
 		}
 	    }
 	} catch (HeadlessException e) {
@@ -596,10 +604,10 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 		QuantidaDeMovimento();
 
 		if (Torre_C.getCont() == objetivo && contaMov == numMinMov) {
-		    JOptionPane.showMessageDialog(null, "Parabéns, alcançou o objetivo de minimos movimentos!\n\n Tenta outro nível de dificuldade", "Parabéns", JOptionPane.WARNING_MESSAGE);
+		    JOptionPane.showMessageDialog(null, "Parabéns!,\n Você alcançou o objetivo de minimos movimentos!\n\n Tente outro nível de dificuldade", "Parabéns!", JOptionPane.WARNING_MESSAGE);
 
 		} else if (Torre_C.getCont() == objetivo && contaMov != numMinMov) {
-		    JOptionPane.showMessageDialog(null, "Parabéns, atingiu o resultado\n\nTenta superar o objtivo ", "Parabéns", JOptionPane.INFORMATION_MESSAGE);
+		    JOptionPane.showMessageDialog(null, "Parabéns!,\nvocê atingiu o resultado\n\nTenta superar o objtivo ", "Parabéns!", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 	    }
@@ -662,6 +670,22 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
 	}
 	
     }
+    public static void main(String[] args) {
+      
+	java.awt.EventQueue.invokeLater(() -> {
+            new TelaPRINCIPAL().setVisible(true);
+        });
+        try {
+	    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+		if ("Nimbus".equals(info.getName())) {
+		    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+		    break;
+		}
+	    }
+	} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+	    java.util.logging.Logger.getLogger(TelaPRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+	}
+    }
     private void btnC_BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC_BActionPerformed
         moveDeC_B();
     }//GEN-LAST:event_btnC_BActionPerformed
@@ -669,35 +693,7 @@ public class TelaPRINCIPAL extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-	/* Set the Nimbus look and feel */
-	//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-	/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-	 */
-	try {
-	    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-		if ("Nimbus".equals(info.getName())) {
-		    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-		    break;
-		}
-	    }
-	} catch (ClassNotFoundException ex) {
-	    java.util.logging.Logger.getLogger(TelaPRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	} catch (InstantiationException ex) {
-	    java.util.logging.Logger.getLogger(TelaPRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	} catch (IllegalAccessException ex) {
-	    java.util.logging.Logger.getLogger(TelaPRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-	    java.util.logging.Logger.getLogger(TelaPRINCIPAL.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-	}
-	//</editor-fold>
-
-	/* Create and display the form */
-	java.awt.EventQueue.invokeLater(() -> {
-            new TelaPRINCIPAL().setVisible(true);
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnA_B;
