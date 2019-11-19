@@ -14,11 +14,11 @@ public class MainQueue {
       
      
 
-         System.out.println("Fila: " + f.toString());
+          System.out.println("Fila: " + f.toString());
           f.dequeue();
-          System.out.println("Depois de tirar um elemento da pilha: "+ f.toString());
-         System.out.println("Get head: "+ f.getHead());
-         System.out.println("Quantidade: " + f.size());
+          System.out.println("Depois de tirar um elemento da Fila: "+ f.toString());
+          System.out.println("Get head: "+ f.getHead());
+          System.out.println("Quantidade: " + f.size());
     //    System.out.println("Fila" + f.toString());
     }
 }
