@@ -9,19 +9,19 @@ import br.com.pinalli.tad.simpleLinked.ListTAD;
  */
 public class StackSimpleLinked<T> implements StackTAD<T> {
 
-    private ListTAD<T> lst = new ListSimpleLinked<>();
+    private ListTAD<T> pilha = new ListSimpleLinked<>();
 
     @Override
     public void push(T element) {
-        lst.addFirst(element);
+        pilha.addFirst(element);
         
     }
 
     @Override
     public T pop() {
 
-        if (!lst.isEmpty()) {
-            return lst.removeFirst();
+        if (!pilha.isEmpty()) {
+            return pilha.removeFirst();
         } else {
             throw new EmptyStackException();
         }
@@ -29,20 +29,20 @@ public class StackSimpleLinked<T> implements StackTAD<T> {
 
     @Override
     public int size() {
-        return lst.size();
+        return pilha.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return lst.isEmpty();
+        return pilha.isEmpty();
 
     }
 
     @Override
     public T top() throws EmptyStackException {
 
-        if (!lst.isEmpty()) {
-            return lst.get(0);
+        if (!pilha.isEmpty()) {
+            return pilha.get(0);
         } else {
             throw new EmptyStackException();
         }
@@ -50,7 +50,7 @@ public class StackSimpleLinked<T> implements StackTAD<T> {
 
     @Override
     public String toString() {
-        return lst.toString()+ " ";
+        return pilha.toString()+ " ";
     }
 
   

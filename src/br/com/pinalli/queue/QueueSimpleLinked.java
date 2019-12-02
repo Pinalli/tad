@@ -9,39 +9,39 @@ import br.com.pinalli.tad.simpleLinked.ListTAD;
  */
 public class QueueSimpleLinked<T> implements QueueTAD<T> {
 
-    private ListTAD<T> f = new ListSimpleLinked<>();
+    private ListTAD<T> fila = new ListSimpleLinked<>();
  
     @Override
     public void enqueue(T element) {
         if(element != null)
-        f.add(element);
+        fila.add(element);
         else 
             throw new IllegalArgumentException();
     }
    @Override
     public T dequeue() {
-        return f.remove(0);
+        return fila.remove(0);
 
     }
     @Override
     public int size() {
-        return f.size();
+        return fila.size();
     }
 
     @Override
     public boolean isEmpty(){
-        return f.isEmpty();
+        return fila.isEmpty();
     }
 
     @Override
     public T getHead(){
-        return f.getFirst();
+        return fila.getFirst();
        
     }
 
    @Override
     public String toString() {
-        return f.toString()+ " ";
+        return fila.toString()+ " ";
     }
 
 
